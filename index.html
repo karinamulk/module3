@@ -4,35 +4,213 @@
     <meta charset="utf-8">
     <title></title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <style media="screen">
-    .box {
-      width: 200px;
-      height: 200px;
-      display: inline-block;
-      background: grey;
-    }
-    .red {
-      background: red;
-    }
-    .blue {
-      background: blue;
-    }
-    .black {
-      background: black;
-    }
-  </style>
+    <style media="screen">
+      .box {
+        width: 150px;
+        height: 150px;
+        background: blue;
+        position: absolute;
+        font-size: 50px;
+        color: white;
+        transition: all .2s;
+      }
+      .a1 {
+        top: 50px;
+        left: 100px;
+      }
+      .a2 {
+        top: 50px;
+        left: 450px;
+      }
+      .a3 {
+        top: 50px;
+        left: 800px;
+      }
+      .a4 {
+        top: 50px;
+        left: 1150px;
+      }
+      .a5 {
+        top: 300px;
+        left: 100px;
+      }
+      .a6 {
+        top: 300px;
+        left: 450px;
+      }
+      .a7 {
+        top: 300px;
+        left: 800px;
+      }
+      .a8 {
+        top: 300px;
+        left: 1150px;
+      }
+      .a9 {
+        top: 550px;
+        left: 100px;
+      }
+      .a10 {
+        top: 550px;
+        left: 450px;
+      }
+      .a11 {
+        top: 550px;
+        left: 800px;
+      }
+      .a12 {
+        top: 550px;
+        left: 1150px;
+      }
+      .black {
+        background: black;
+      }
+      .top {
+        top: -170px;
+      }
+      .rotate {
+        transform: rotate(360deg);
+      }
+      .rounder {
+        border-radius: 50%;
+      }
+      .red {
+        background: yellow;
+        opacity: 50%;
+      }
+      .opacity {
+        left: -200px;
+        opacity: 0%;
+        transform: rotate(180deg);
+      }
+      .ball {
+        top: 470px;
+      }
+      .push {
+        opacity: 0%;
+      }
+      .move {
+        transform: scaleX(1.2);
+      }
+      .move1 {
+        left: 1800px;
+      }
+      .scale {
+        transform: scale(1.5);
+      }
+      .bigscale {
+        transform: scale(10);
 
-  <script type="text/javascript">
-  $(document).ready(function(){
-	  $(".blue").click(function(){
-		  $(".red").css("background-color","black");
-	  });
-  });
-  </script>
+      }
+    </style>
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $(".a1").click(function(){
+        $("div").toggleClass("black");
+      });
+      $(".a12").click(function(){
+        $("div").removeClass("top");
+        $(".a9").removeClass("opacity");
+        $(".a8").removeClass("move");
+        $(".a8").removeClass("move1");
+      });
+      $(".a2").click(function(){
+        $(".a3").addClass("top");
+      });
+      $(".a3").click(function(){
+        $(".a4").toggleClass("rounder");
+        $(".a4").toggleClass("rotate");
+      });
+
+      $(".vv").click(function(){
+        $(".vv").addClass("rounder");
+      });
+      $(".a5").click(function(){
+        $(".vv").removeClass("rounder");
+      });
+      $(".a7").click(function(){
+        $("*").toggleClass("red");
+      });
+      $(".a9").click(function(){
+        $(".a9").addClass("opacity");
+      });
+      $(".a10").click(function(){
+        $(".a10").addClass("ball");
+        setTimeout(function(){
+          $(".a10").toggleClass("ball");
+        }, 200);
+        setTimeout(function(){
+          $(".a10").toggleClass("ball");
+        }, 400);
+        setTimeout(function(){
+          $(".a10").toggleClass("ball");
+        }, 600);
+      });
+      $(".a4").click(function(){
+        $(".a8").addClass("push");
+        setTimeout(function(){
+          $(".a8").toggleClass("push");
+        }, 200);
+        setTimeout(function(){
+          $(".a8").toggleClass("push");
+        }, 400);
+        setTimeout(function(){
+          $(".a8").toggleClass("push");
+        }, 600);
+        setTimeout(function(){
+          $(".a8").toggleClass("push");
+        }, 800);
+        setTimeout(function(){
+          $(".a8").toggleClass("push");
+        }, 1000);
+        setTimeout(function(){
+          $(".a8").removeClass("rounder");
+        }, 1200);
+        setTimeout(function(){
+          $(".a8").addClass("move");
+        }, 1300);
+        setTimeout(function(){
+          $(".a8").addClass("move1");
+        }, 1350);
+      });
+      $(".a6").click(function(){
+        $(".a6").toggleClass("scale");
+        setTimeout(function(){
+          $(".a8").toggleClass("scale");
+        }, 100);
+        setTimeout(function(){
+          $(".a6").toggleClass("scale");
+        }, 200);
+        setTimeout(function(){
+          $(".a8").toggleClass("scale");
+        }, 300);
+      });
+      $(".a8").click(function(){
+        $(".a11").toggleClass("red");
+      });
+      $(".a11").click(function(){
+        $(".a11").toggleClass("bigscale");
+        $(".a11").addClass("black");
+        setTimeout(function(){
+          $(".a11").toggleClass("bigscale");
+          $(".a11").removeClass("black");
+        }, 500);
+      });
+    });
+    </script>
   </head>
   <body>
-    <div class="box red"></div>
-    <div class="box blue"></div>
-    <div class="box"></div>
+    <div class="box vv a1"></div>
+    <div class="box a2"></div>
+    <div class="box a3"></div>
+    <div class="box vv a4"></div>
+    <div class="box vv a5"></div>
+    <div class="box a6"></div>
+    <div class="box vv a7"></div>
+    <div class="box vv a8"></div>
+    <div class="box a9"></div>
+    <div class="box vv a10"></div>
+    <div class="box vv a11"></div>
+    <div class="box a12">back</div>
   </body>
 </html>
