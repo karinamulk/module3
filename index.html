@@ -100,7 +100,9 @@
       }
       .bigscale {
         transform: scale(10);
-
+      }
+      .snake {
+        height: 2000px;
       }
     </style>
     <script type="text/javascript">
@@ -128,9 +130,9 @@
       $(".a5").click(function(){
         $(".vv").removeClass("rounder");
       });
-      $(".a7").click(function(){
-        $("*").toggleClass("red");
-      });
+      // $(".a7").click(function(){
+      //   $("*").toggleClass("red");
+      // });
       $(".a9").click(function(){
         $(".a9").addClass("opacity");
       });
@@ -195,6 +197,10 @@
           $(".a11").toggleClass("bigscale");
           $(".a11").removeClass("black");
         }, 500);
+      });
+      $(".a7").click(function(){
+        $(".a7").removeClass("rounder");
+        $(".a7").toggleClass("snake");
       });
     });
     </script>
