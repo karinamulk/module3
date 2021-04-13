@@ -3,11 +3,15 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/mailtoharshit/San-Francisco-Font-/sanfrancisco.css">
     <style media="screen">
       * {
         box-sizing: border-box;
 
+      }
+      *:focus {
+        outline: none;
       }
       html, body {
         margin: 0;
@@ -115,7 +119,34 @@
         margin-right: 15px;
       }
       .menu-search {
-        display: none;
+        display: flex;
+        width: 480px;
+        margin: 0 auto;
+        justify-content: space-between;
+        transition: all .4s ease;
+
+      }
+      .menu-search input {
+        margin: 0;
+        height: 44px;
+        font-size: 17px;
+        background: transparent;
+        color: white;
+        border: none;
+        font-weight: 200;
+
+      }
+      .menu-search * {
+        transition: all .4s ease;
+      }
+      .menu-search.fade > a{
+        transform: translateX(6px);
+      }
+      .menu-search.fade > span{
+        transform: translateX(24px);
+      }
+      .menu-search.fade > input{
+        transform: translateX(10px);
       }
       nav {
         position: relative;
@@ -123,6 +154,7 @@
         width: 100%;
         height: 46px;
         background: rgba(0, 0, 0, 0.8);
+        z-index: 30;
       }
       nav > div {
         width: 1024px;
@@ -134,12 +166,18 @@
       .menu-items {
         display: flex;
         justify-content: space-between;
+        transition: all .4s ease;
       }
       .menu-items a {
         line-height: 46px;
         color: white;
         opacity: .8;
+        height: 44px;
         text-decoration: none;
+        transition: all .4s ease;
+      }
+      .menu-items.fade a {
+        transform: scale(.8);
       }
       .banner {
         position: relative;
@@ -195,16 +233,98 @@
         right: 10%;
         bottom: 0;
       }
+      .icon {
+        background-position: 0 center;
+        height: 44px;
+        width: 20px;
+        display: block;
+        position: relative;background-repeat: no-repeat;
+
+      }
     @keyframes colors {
       0% {transform: rotate(0deg);}
       100% {transform: rotate(360deg);}
     }
+    .icon_logo {
+      background-image: url('images/apple.svg');
+    }
+    .icon_search {
+      background-image: url('images/search.svg');
+      background-position: center 0;
+      background-size: 90% auto;
+    }
+    .icon_bin {
+      background-image: url('images/bin.svg');
+
+    }
+    span.icon_search {
+    background-position: center 100%;
+    }
+    .cross {
+      position: absolute;
+      display: block;
+      width: 1px;
+      height: 20px;
+      background: #aaa;
+      top: 12px;
+    }
+    .cross1 {
+      transform: rotate(45deg);
+    }
+    .cross2 {
+      transform: rotate(-45deg);
+    }
+    .black_screen {
+      position: fixed;
+      display: block;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 20;
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      transition: all .6s ease;
+    }
+    .hidden {
+      display: none;
+
+
+    }
+    .fade {
+      opacity: 0;
+
+    }
     </style>
+    <script type="text/javascript">
+    $(document).ready(function () {
+      $(".menu-items .icon_search, .icon_close").click(function () {
+        $(this).parent().addClass("fade");
+        $(".black_screen").addClass("fade");
+
+        setTimeout(function () {
+          $(".menu-items, .menu-search, .black_screen").toggleClass("hidden");
+        },500);
+        setTimeout(function () {
+          if($(".menu-items").hasClass("hidden")){
+            $(".menu-search").removeClass("fade");
+            $(".black_screen").removeClass("fade");
+        } else{
+          $(".menu-items").removeClass("fade");
+        }
+          $(".menu-search").removeClass("fade");
+        },600);
+      })
+
+    })
+    </script>
   </head>
   <body>
+    <div class="black_screen hidden fade"></div>
     <nav>
       <div class="menu-items">
-        <a href="#">Logo</a>
+        <a href="#" class="icon icon_logo"></a>
         <a href="#">mac</a>
         <a href="#">iPad</a>
         <a href="#">iPhone</a>
@@ -212,11 +332,16 @@
         <a href="#">TV</a>
         <a href="#">Music</a>
         <a href="#">Support</a>
-        <a href="#">Search</a>
-        <a href="#">Cart</a>
+        <a href="#" class="icon icon_search"></a>
+        <a href="#" class="icon icon_bin"></a>
       </div>
-      <div class="menu-search">
-        <span></span> <input type="text" name="" value=""> <a href="#"></a>
+      <div class="menu-search hidden fade">
+        <span class="icon icon_search"></span>
+        <input type="text" name="" value="" placeholder="Search apple com">
+        <a href="#" class="icon icon_close" >
+          <span class="cross cross1"></span>
+          <span class="cross cross2"></span>
+        </a>
       </div>
     </nav>
 
