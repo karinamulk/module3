@@ -317,6 +317,21 @@
         },600);
       })
 
+      $(".black_screen").click(function () {
+        $(this).addClass("fade");
+        setTimeout(function () {
+          $(".menu-items, .menu-search, .black_screen").toggleClass("hidden");
+        },500);
+        setTimeout(function () {
+          if($(".menu-items").hasClass("hidden")){
+            $(".menu-search").removeClass("fade");
+            $(".black_screen").removeClass("fade");
+        } else{
+          $(".menu-items").removeClass("fade");
+        }
+          $(".menu-search").removeClass("fade");
+        },600);
+      })
     })
     </script>
   </head>
