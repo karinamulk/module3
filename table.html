@@ -97,16 +97,37 @@
         let disc;
         let type;
         let next_row;
+        let a;
         $("#new_row button").click(function(){
           week = $('[name="week"]').val();
           name_of = $('[name="name_of"]').val();
           date = $('[name="date"]').val();
           disc = $('[name="disc"]').val();
+          console.log(disc);
           type = $('[name="type"]').val();
-          next_row = '<tr><td>'+week+'</td><td>'+name_of+'</td><td>'+disc+'</td><td><span class="sp_yellow">'+disc+'</span></td><td><span class="sp_yellow">'+type+'</span></td><td></td></tr>'
+          next_row = '<tr><td>'+week+'</td><td>'+name_of+'</td><td>'+date+'</td><td class="disc_td"><span class="disc_span">'+disc+'</span></td><td class="type_td"><span class="type_span">'+type+'</span></td><td></td></tr>'
+
           $("table tr").last().after(next_row);
+          if (disc == "Технологии") {
+            $('table tr').last().children(".disc_td").children(".disc_span").addClass("sp_red");
+          } else {
+            $('table tr').last().children(".disc_td").children(".disc_span").addClass("sp_yellow");
+          }
+          if (type == "Воркшоп") {
+            $('table tr').last().children(".type_td").children(".type_span").addClass("sp_green");
+          }
+          if (type == "Лекция") {
+            $('table tr').last().children(".type_td").children(".type_span").addClass("sp_yellow");
+          }
+          if (type == "Домашка") {
+            $('table tr').last().children(".type_td").children(".type_span").addClass("sp_purple");
+          }
+          if (type == "Ревью") {
+            $('table tr').last().children(".type_td").children(".type_span").addClass("sp_red");
+          }
           $('#new_row input').val("");
         })
+
       });
     </script>
   </head>
@@ -186,11 +207,15 @@
       <input type="text" name="week" value="">
       <input type="text" name="name_of" value="">
       <input type="text" name="date" value="">
-      <select class="" name="disc">
+      <select class="disc" name="disc">
         <option value="Технологии">Технологии</option>
+        <option value="Арт–практика">Арт–практика</option>
       </select>
-      <select class="" name="type">
+      <select class="type" name="type">
         <option value="Воркшоп">Воркшоп</option>
+        <option value="Лекция">Лекция</option>
+        <option value="Домашка">Домашка</option>
+        <option value="Ревью">Ревью</option>
       </select>
       <button type="button" name="button">+</button>
     </form>
