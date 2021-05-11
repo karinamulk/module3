@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <style media="screen">
+      body{
+        margin: 0;
+      }
+      html{
+        position: relative;
+        height: 100%;
+        width: 100%;
+        background: black;
+      }
+      .big {
+        position: relative;
+        display: block;
+        margin: 1% 0;
+        width: 100%;
+        background-color: black;
+      }
+      .container {
+        position: relative;
+        display: block;
+        margin: auto;
+        width: 800px;
+        height: 800px;
+        overflow: hidden;
+        background-color: #E0D3CA;
+      }
+      .round1 {
+        position: relative;
+        display: inline-block;
+        margin: -12.5% -12.5%;
+        width: 1000px;
+        height: 1000px;
+        border-radius: 50%;
+        background-color: #7F251D;
+        animation: scale 1.5s alternate infinite;
+
+      }
+      .round2 {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 800px;
+        height: 800px;
+        border-radius: 50%;
+        background-color: #E0D3CA;
+      }
+      .round3 {
+        position: absolute;
+        left: calc(50% - 250px);
+        top: calc(50% - 250px);
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        background-color: #E43C18;
+      }
+      .round-quater-over {
+        position: absolute;
+        left: calc(50% - 325px);
+        top: calc(50% - 325px);
+        width: 650px;
+        height: 650px;
+        border-radius: 50%;
+        background-color: #E0D3CA;
+      }
+      .rectangle {
+        position: absolute;
+        left: calc(50% - 125px);
+        top: 27%;
+        width: 250px;
+        height: 250px;
+        background-color: #132330;
+        transition: all .5s;
+
+      }
+      .rectangle:hover {
+        background-color: #7F251D;
+        transition: all .3s;
+
+      }
+      .back-rectangle {
+        position: absolute;
+        top: -5%;
+        left: 40%;
+        width: 100px;
+        height: 800px;
+        transform: rotate(45deg);
+        background-color: #132330;
+        transition: all .5s;
+
+      }
+      .back-rectangle:hover {
+        background-color: #7F251D;
+        transition: all .3s;
+
+      }
+      .back-rectangle2 {
+        position: absolute;
+        top: 10%;
+        left: 43.5%;
+        width: 80px;
+        height: 780px;
+        transform: rotate(45deg);
+        background-color: #ADB1BA;
+        animation: color2 1s alternate infinite;
+
+      }
+      .round-quater-box {
+        position: absolute;
+        left: 51%;
+        top:-45%;
+        width: 750px;
+        height: 750px;
+        overflow: hidden;
+      }
+      .round-quater {
+        position: absolute;
+        left: -50%;
+        bottom: -50%;
+        width: 750px;
+        height: 750px;
+        border-radius: 50%;
+        background-color: #CB4B26;
+      }
+
+      .arrow-up {
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        border-bottom: 50px solid black;
+        bottom: 20%;
+        right: 15%;
+        transform: rotate(45deg);
+        animation: move 1s alternate infinite;
+        animation-play-state: paused;
+        transition: all .5s;
+      }
+      .arrow-up:hover {
+        border-bottom: 50px solid #7F251D;
+        transition: all .2s;
+
+      }
+      .container-anim {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 800px;
+        height: 800px;
+        border-radius: 50%;
+        background-color: #E0D3CA;
+        animation: rotate 7s linear infinite;
+      }
+      @keyframes rotate {
+        0% {transform: rotate(0deg);}
+        100% {transform: rotate(360deg);}
+      }
+
+      @keyframes color2 {
+        0% {background-color: #ADB1BA;}
+        100% {background-color: #757C8B;}
+      }
+      @keyframes scale {
+        0% {transform: scale(2);}
+        80% {transform: scale(1);}
+      }
+      @keyframes move {
+        0% {transform: rotate(360deg); bottom: 20%; right: 15%;}
+        100% {transform: rotate(0deg); bottom: 70%; right: 75%;}
+
+      }
+      .top {
+        top: 27%;
+      }
+      .bottom {
+        top: 37%;
+      }
+      .rect-rotate {
+        transform: rotate(65deg);
+      }
+      .rect-rotate1 {
+        transform: rotate(45deg);
+      }
+      #second-round {
+        background-color: black;
+      }
+      #second-box {
+        left: -45%;
+        top:50%;
+        bottom: 50%;
+      }
+      #second-round {
+        left: 50%;
+        bottom: 50%;
+      }
+    </style>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        let a = 0;
+        $(".rectangle").click(function(){
+        	if (a == 1) {
+            $(this).addClass("top");
+            $(this).removeClass("bottom");
+            a -= 1;
+          } else {
+            $(this).addClass("bottom");
+            $(this).removeClass("top");
+            a += 1;
+          }
+        });
+
+        $(".back-rectangle").click(function(){
+          $(".back-rectangle").removeClass("rect-rotate");
+          $(".back-rectangle").removeClass("rect-rotate1");
+          setTimeout(function(){
+            $(".back-rectangle").addClass("rect-rotate");
+
+          },0);
+          setTimeout(function(){
+            $(".back-rectangle").addClass("rect-rotate1");
+          },100);
+        });
+        $(".arrow-up").click(function(){
+          $(this).css("animation-play-state", "running");
+
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="big">
+      <div class="container">
+        <div class="round1"></div>
+        <div class="round2"></div>
+        <div class="container-anim">
+          <div class="round-quater-box">
+            <div class="round-quater"></div>
+          </div>
+          <div class="round-quater-over"></div>
+          <div class="round-quater-box" id="second-box">
+            <div class="round-quater" id="second-round"></div>
+          </div>
+          <div class="round-quater-over" id="second-over"></div>
+        </div>
+        <div class="back-rectangle"></div>
+        <div class="back-rectangle2"></div>
+        <div class="round3"></div>
+        <div class="rectangle"></div>
+        <div class="arrow-up"></div>
+      </div>
+    </div>
+  </body>
+</html>
